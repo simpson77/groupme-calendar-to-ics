@@ -7,15 +7,17 @@ from flask import current_app
 
 
 def return_ics_Response(response_body):
+    # Use 'inline' instead of 'attachment' for Android calendar compatibility
+    # Android's calendar app needs to subscribe, not download
     return Response(
         response_body,
-        mimetype='text/calendar',
-        headers={'Content-Disposition': 'attachment'}
+        mimetype='text/calendar; charset=utf-8',
+        headers={'Content-Disposition': 'inline; filename="calendar.ics"'}
     )
 
 
 def build_ics_urls(ics_url):
-    google_calendar_url_base = 'https://calendar.google.com/calendar/u/0/r?cid='
+    google_calendar_url_base = 'http://www.google.com/calendar/render?cid='
 
     # Parse the URL into [scheme, netloc, path, params, query, fragment]
     parsed_ics_url = list(urlparse(ics_url))
@@ -66,8 +68,12 @@ def groupme_json_to_ics(groupme_json, static_name=None):
     cal['method'] = 'PUBLISH'
     cal['x-wr-calname'] = 'GroupMe: {}'.format(current_app.groupme_calendar_name)
     cal['x-wr-timezone'] = current_app.calendar_timezone
+    cal['x-wr-caldesc'] = 'Calendar for GroupMe group: {}'.format(current_app.groupme_calendar_name)
 
-    for json_blob in groupme_json['response']['events']:
+    # Check if events exist
+    events_list = groupme_json.get('response', {}).get('events', [])
+    
+    for json_blob in events_list:
         if 'deleted_at' not in json_blob:
             event = Event()
             event['uid'] = json_blob['event_id']
