@@ -10,7 +10,7 @@ virtualenv:  ## Build the python virtual environment.
 	@echo -e "Building/verifying virtualenv at $(PYTHON_ENV) based on $(PYTHON_REQUIREMENTS)\n"
 	@command -v pip >/dev/null 2>&1 || { echo >&2 "I require pip but it's not installed.  Aborting."; exit 1; }
 	@if [ ! -f "$(PYTHON_ENV)/bin/activate" ] ; then \
-	     virtualenv $(PYTHON_ENV) ; \
+	     virtualenv --python=python3.11 $(PYTHON_ENV) ; \
 	fi
 	@source $(PYTHON_ENV)/bin/activate ; \
 	pip install -r $(PYTHON_REQUIREMENTS)
