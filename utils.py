@@ -17,7 +17,7 @@ def return_ics_Response(response_body):
 
 
 def build_ics_urls(ics_url):
-    google_calendar_url_base = 'http://www.google.com/calendar/render?cid='
+    google_calendar_url_base = 'https://calendar.google.com/calendar/r?cid='
 
     # Parse the URL into [scheme, netloc, path, params, query, fragment]
     parsed_ics_url = list(urlparse(ics_url))
