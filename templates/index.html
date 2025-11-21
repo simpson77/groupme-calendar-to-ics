@@ -75,8 +75,10 @@
     /* Portrait phones and smaller */
     @media (max-width: 767px) {
         .calendar-links {
-            
+            padding-bottom:10px;
         }
+      .container {    margin: 24px;
+}
     }
     </style>
 </head>
@@ -91,14 +93,14 @@
     <div class="row calendar-links-row">
         <div class="col-sm-6 calendar-links">
             <a href="{{ ics_url_webcal }}">
-                <i class="fa fa-brands fa-apple"></i><br>
+                <i class="fa fa-brands fa-apple"></i><br class="hidden-xs" />
                 
                 iCal/Outlook/Other
             </a>
         </div>
          <div class="col-sm-6 calendar-links">
             <a href="{{ ics_url_google }}">
-                <i class="fa fa-brands fa-google"></i><br>
+                <i class="fa fa-brands fa-google"></i><br class="hidden-xs" />
                
                 Google Calendar* 
             </a><br/><small>(desktop only)</small>
@@ -126,13 +128,13 @@
     <div class="row calendar-links-row">
         <div class="col-sm-6 calendar-links">
             <a href="{{ ics_url_http }}">
-                <i class="fa fa-solid fa-calendar"></i><br/>
+                <i class="fa fa-solid fa-calendar"></i><br class="hidden-xs" />
                 calendar.ics
             </a>
         </div>
         <div class="col-sm-6 calendar-links">
             <a href="{{ ics_url_webcal }}">
-                <i class="fa fa-solid fa-download"></i><br/>
+                <i class="fa fa-solid fa-download"></i><br class="hidden-xs" />
                 Webcal
             </a>
         </div>
