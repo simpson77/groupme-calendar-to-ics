@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
@@ -19,7 +19,7 @@
       font-family: "Inter Tight", sans-serif;
   font-optical-sizing: auto;
     color:#0c2340;
-      text-align:center;
+      text-align: center;
       }
 
     h1 {
@@ -48,11 +48,12 @@
       color:#0c2340;
     }
 
-    .calendar-links i.cal-icon-desktop{
+    i.cal-icon-desktop{
         font-size: 36px;
     }
 
-      .calendar-links i {color:#5d1725}
+      .calendar-links i {color:#5d1725; font-size:24px}
+      .calendar-links i.fa-google {font-size:20px;}
     .calendar-links-row {
         margin-top: 30px;
         margin-bottom: 30px;
@@ -90,20 +91,33 @@
     </div>
     <div class="row calendar-links-row">
         <div class="col-sm-6 calendar-links">
-            <a href="{{ ics_url_google }}">
-                <i class="fa fa-google cal-icon-desktop hidden-xs" aria-hidden="true"></i><br>
-                <i class="fa fa-google hidden-sm hidden-md hidden-lg hidden-xl" aria-hidden="true">&nbsp;&nbsp;</i>
-                Google Calendar
-            </a>
-        </div>
-        <div class="col-sm-6 calendar-links">
             <a href="{{ ics_url_webcal }}">
-                <i class="fa fa-apple cal-icon-desktop hidden-xs" aria-hidden="true"></i><br>
+                <i class="fa fa-brands fa-apple"></i><br>
                 <i class="fa fa-apple hidden-sm hidden-md hidden-lg hidden-xl" aria-hidden="true">&nbsp;&nbsp;</i>
                 iCal/Outlook/Other
             </a>
         </div>
+         <div class="col-sm-6 calendar-links">
+            <a href="{{ ics_url_google }}">
+                <i class="fa fa-brands fa-google"></i><br>
+                <i class="fa fa-google hidden-sm hidden-md hidden-lg hidden-xl" aria-hidden="true">&nbsp;&nbsp;</i>
+                Google Calendar 
+            </a><br/><small>(desktop only)</small>
+        </div>
     </div>
+  
+      <div class="row" style="text-align:left;">
+        <div class="col-sm-12" >
+          <p><i class="fa fa-brands fa-google"></i> <b>Google/Android Manual Instructions</b></p>
+          <ol style="text-align:left;">
+            <li>Navigate to <a href="https://calendar.google.com/">Google Calendar</a> <i class="fa fa-solid fa-calendar"></i></li>
+            <li>At the top right, click Settings <i class=" fa fa-solid fa-gear"></i></li>
+            <li>Click <i class="fa fa-solid fa-arrow-pointer"></i> <b>Settings</b></li>
+            <li>From the left menu, click  <i class="fa fa-solid fa-arrow-pointer"></i><b>Import & Export</b></li>
+            <li>Choose <b>From URL</b></li>
+            <li>Add the following URL: {{ ics_url_webcal }}</li>
+          </ol>
+    </div></div>
 
     <div class="row">
         <div class="col-sm-12" >The group's calendar can also be accessed directly over both <code>http</code> and <code>webcal</code>:</div>
@@ -112,15 +126,13 @@
     <div class="row calendar-links-row">
         <div class="col-sm-6 calendar-links">
             <a href="{{ ics_url_http }}">
-                <i class="fa fa-arrow-circle-o-down cal-icon-desktop hidden-xs" aria-hidden="true"></i><br>
-                <i class="fa fa-arrow-circle-o-down hidden-sm hidden-md hidden-lg hidden-xl" aria-hidden="true">&nbsp;&nbsp;</i>
+                <i class="fa fa-solid fa-calendar"></i><br/>
                 calendar.ics
             </a>
         </div>
         <div class="col-sm-6 calendar-links">
             <a href="{{ ics_url_webcal }}">
-                <i class="fa fa-calendar-o cal-icon-desktop hidden-xs" aria-hidden="true"></i><br>
-                <i class="fa fa-calendar-o hidden-sm hidden-md hidden-lg hidden-xl" aria-hidden="true">&nbsp;&nbsp;</i>
+                <i class="fa fa-solid fa-download"></i><br/>
                 Webcal
             </a>
         </div>
@@ -128,7 +140,7 @@
 
     <div class="row">
         <div class="col-sm-12">
-            Want a calendar feed for your GroupMe group?  Grab the script on <a href="https://github.com/simpson77/groupme-calendar-to-ics"><i class="fa fa-github"  aria-hidden="true"></i> Github here</a>.<br class="hidden-xs"><br class="hidden-xs">
+            Want a calendar feed for your GroupMe group?  Grab the script on <a href="https://github.com/simpson77/groupme-calendar-to-ics"><i class="fa-brands fa-github"></i> Github here</a>.<br class="hidden-xs"><br class="hidden-xs">
             Originally Created by <a href="https://amussey.com">Andrew Mussey</a> and Rebuilt for Python 3.11+ by <a href="https://www.linkedin.com/in/gavinsimpson1/">Gavin Simpson</a>.
         </div>
     </div>
